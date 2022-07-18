@@ -1,11 +1,15 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
-const SingleMovies = () => {
+const Singlemovies = () => {
+  const {id} = useParams();
   return (
-    <div>
-      
-    </div>
+    <>
+      <div>
+        our single movies page {id}
+      </div>
+    </>
   )
 }
 
-export default SingleMovies
+export default Singlemovies
