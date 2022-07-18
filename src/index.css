@@ -19,6 +19,10 @@ html {
     font-size: 62.5%;
 }
 
+body {
+    background-color: #34495e;
+}
+
 .grid {
     display: flex;
     justify-content: center;
