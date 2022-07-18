@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 const apikey = process.env.REACT_APP_API_KEY 
 
-const API_URL = `https://www.omdbapi.com/?i=tt3896198&apikey=${apikey}&s=avenger&page=2`;
+const API_URL = `https://www.omdbapi.com/?i=tt3896198&apikey=${apikey}`;
 
 
 
@@ -13,6 +13,7 @@ const AppProvider = ({ children }) => {
     const [isLoading ,setIsLoading] = useState(true);
     const [movie ,setMovie] = useState([])
     const [isError,setIsError] = useState({show:'false' , msg:""});
+    const [query,setQuery] = useState("batman")
     console.log();
 
     const getMovies = async(url)=>{
@@ -37,10 +38,10 @@ const AppProvider = ({ children }) => {
     }
 
     useEffect(()=>{
-        getMovies(API_URL);
+        getMovies(`${API_URL}&s=${query}&page=2`);
 
-    },[])
-    return  <AppContext.Provider value={{isLoading,isError,movie}}>
+    },[query])
+    return  <AppContext.Provider value={{isLoading,isError,movie,query,setQuery}}>
         {children}
     </AppContext.Provider>
 
